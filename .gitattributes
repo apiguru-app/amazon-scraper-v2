@@ -1,0 +1,3 @@
+examples/** linguist-documentation=false
+
+*.py linguist-language=Python
