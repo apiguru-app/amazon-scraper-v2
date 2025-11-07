@@ -6,11 +6,11 @@
 
 # amazon-scraper-v2
 
-Code examples for the Amazon Scraper API. Get real-time product data, prices, reviews, seller information, and more from Amazon marketplaces worldwide.
+Code examples for the Amazon Scraper API (**amazon-scraper-v2** project). Get real-time product data, prices, reviews, seller information, and more from Amazon marketplaces worldwide.
 
 ## Quick Start
 
-### 1. Get Your API Key
+### 1. Get Your API Key for **amazon-scraper-v2**
 
 Register for a free account and get your API key:
 
@@ -26,7 +26,7 @@ pip install requests
 
 ### 3. Run Examples
 
-Each endpoint has its own simple example file. Just add your API key and run:
+Each endpoint has its own simple example file. Just add your API key for **amazon-scraper-v2** and run:
 
 ```bash
 # Search for products
@@ -404,7 +404,7 @@ amazon-scraper-v2/
 2. **Use the right endpoint** - Choose the endpoint that returns only what you need
 3. **Check rate limits** - Monitor your usage in the dashboard
 
-## Support
+## Support for **amazon-scraper-v2**.
 
 - **Documentation**: [https://docs.apiguru.app](https://docs.apiguru.app)
 - **Dashboard**: [https://dash.apiguru.app](https://dash.apiguru.app)
@@ -416,7 +416,7 @@ amazon-scraper-v2/
 These code examples are provided as-is for use with the Amazon API service.
 
 ## Get Started Now!
-
+To use **amazon-scraper-v2**:
 1. **Register**: [https://dash.apiguru.app/register](https://dash.apiguru.app/register)
 2. **Get your API key**: Free trial included!
 3. **Copy examples**: Choose your language
