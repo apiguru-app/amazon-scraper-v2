@@ -4,7 +4,7 @@
   </a>
 </div>
 
-# amazon-scraper-v2
+# amazon-scraper-v2 - Your Easy Amazon Data Solution
 
 Code examples for the Amazon Scraper API (**amazon-scraper-v2** project). Get real-time product data, prices, reviews, seller information, and more from Amazon marketplaces worldwide.
 
