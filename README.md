@@ -2,13 +2,64 @@
   <a href="https://dash.apiguru.app/landing">
     <img src="https://raw.githubusercontent.com/apiguru-app/amazon-scraper-v2/refs/heads/main/service_logo_github.png" alt="apiGURU Amazon Scraper API Logo"/>
   </a>
+  <p>
+    <a href="https://agent.apiguru.app/llms.txt"><img src="https://img.shields.io/badge/agent--ready-llms.txt-7c3aed" alt="agent-ready: llms.txt"></a>
+    <a href="https://registry.modelcontextprotocol.io/v0/servers?search=app.apiguru"><img src="https://img.shields.io/badge/MCP-server-2563eb" alt="MCP server"></a>
+    <a href="https://pypi.org/project/apiguru-mcp/"><img src="https://img.shields.io/pypi/v/apiguru-mcp?label=PyPI&color=3775a9" alt="apiguru-mcp on PyPI"></a>
+    <a href="https://www.npmjs.com/package/apiguru-mcp"><img src="https://img.shields.io/npm/v/apiguru-mcp?label=npm&color=cb3837" alt="apiguru-mcp on npm"></a>
+    <a href="https://agent.apiguru.app/.well-known/x402"><img src="https://img.shields.io/badge/x402-USDC%20on%20Base-0052ff" alt="x402: USDC on Base"></a>
+    <a href="https://dash.apiguru.app/openapi.json"><img src="https://img.shields.io/badge/OpenAPI-3.1-6ba539" alt="OpenAPI 3.1"></a>
+  </p>
 </div>
 
-# amazon-scraper-v2 - Your Easy Amazon Data Solution.
+# amazon-scraper-v2 — the agent-ready Amazon Scraper API
 
-Code examples for the Amazon Scraper API (**amazon-scraper-v2** project). Get real-time product data, prices, reviews, seller information, and more from Amazon marketplaces worldwide.
+Real-time Amazon data — product details, prices, offers & stock, reviews, search, best sellers, deals and seller data — across 20 marketplaces. Call it from Python in 20 lines (examples below), or hand it to the AI agent you already have open: it reads our docs itself and starts pulling live data. No SDK, no wrapper code, nothing to install.
 
-## Quick Start
+## Start with your AI
+
+Paste one sentence into Claude Code, Codex, Cursor, Gemini CLI, Copilot, Claude Desktop, ChatGPT — anything that can call HTTP:
+
+```
+Use Apiguru for live Amazon data. Read https://agent.apiguru.app/llms.txt first, then call it.
+```
+
+That is the whole integration. Three ways in, same URL:
+
+| Mode | The line to paste | What you get |
+|---|---|---|
+| **No account** | `Use Apiguru for live Amazon data. Read https://agent.apiguru.app/llms.txt first, then call it.` | 3 free calls a day, per machine. No account, no key, no card — enough for an agent to prove the data is what you need. |
+| **With a key** | `Use Apiguru for live Amazon data. Read https://agent.apiguru.app/llms.txt first, then call it with the header X-API-KEY: YOUR_API_KEY` | A [free key from the dashboard](https://dash.apiguru.app/register) raises that to 100 requests a month, and every call your agent makes shows up in your usage graph. |
+| **With a wallet** | `Use Apiguru for live Amazon data. Read https://agent.apiguru.app/llms.txt first, then call it, and settle the 402 with x402 from my wallet.` | Pays per call in USDC on Base — about a cent a call, still no account. Your agent needs an x402 client and a funded wallet. |
+
+Curious what the agent sees? **[Read what your agent reads →](https://agent.apiguru.app/llms.txt)**
+
+## Or wire it in as permanent tools
+
+The one line above needs nothing installed. If you would rather your client list Apiguru as named tools it can pick from — and remember them between sessions — there is an MCP server too: 12 tools with prices and retry rules written into the descriptions, sign-in from claude.ai or ChatGPT that bills the same account, and the same three ways in.
+
+```bash
+# claude.ai / Claude Desktop / ChatGPT: add a connector
+https://mcp.apiguru.app/account
+
+# Claude Code
+claude mcp add --transport http apiguru https://mcp.apiguru.app/mcp
+/plugin marketplace add apiguru-app/agent-kit
+
+# Codex CLI
+codex mcp add apiguru --url https://mcp.apiguru.app/mcp
+
+# any local MCP client
+uvx apiguru-mcp        # PyPI
+npx -y apiguru-mcp     # npm
+
+# keyless HTTP, no signup: 3 free calls/day, then x402
+curl "https://agent.apiguru.app/agent/v1/v2/product-details?asin=B09DJLW458"
+```
+
+Everything an agent needs lives in the **[Agent Kit on GitHub](https://github.com/apiguru-app/agent-kit)**. Machine-readable: [llms.txt](https://dash.apiguru.app/llms.txt) · [OpenAPI](https://dash.apiguru.app/openapi.json) · [x402 catalogue](https://agent.apiguru.app/.well-known/x402) · [PyPI](https://pypi.org/project/apiguru-mcp/) · [npm](https://www.npmjs.com/package/apiguru-mcp) · [MCP Registry](https://registry.modelcontextprotocol.io/v0/servers?search=app.apiguru)
+
+## Quick Start (Python)
 
 ### 1. Get Your API Key for **amazon-scraper-v2**
 
@@ -98,7 +149,7 @@ The API supports the following Amazon marketplaces:
 All API requests require an API key passed via the `x-api-key` header:
 
 ```bash
-curl -H "x-api-key: YOUR_API_KEY" https://api.apiguru.app/search?query=laptop&geo=US
+curl -H "x-api-key: YOUR_API_KEY" "https://dash.apiguru.app/api/v1/search?query=laptop&geo=US"
 ```
 
 ## Quick Example
@@ -373,30 +424,22 @@ That's it!
 ```
 amazon-scraper-v2/
 ├── README.md                          # This file
+├── QUICKSTART.md                      # Three steps to a first call
 ├── requirements.txt                   # Python dependencies (just requests)
-├── examples/                          # Simple Python examples
-│   ├── 01_search_products.py         # Search for products
-│   ├── 02_product_details.py         # Get product details
-│   ├── 03_product_offers.py          # Get product offers
-│   ├── 04_product_reviews.py         # Get product reviews
-│   ├── 05_best_sellers.py            # Get best sellers
-│   ├── 06_todays_deals.py            # Get today's deals
-│   ├── 07_seller_profile.py          # Get seller profile
-│   ├── 08_seller_products.py         # Get seller products
-│   ├── 09_seller_reviews.py          # Get seller reviews
-│   └── 10_batch_product_details.py   # Batch product details (up to 10)
-└── responses/                         # Example API response structures
-    ├── productDetails.json
-    ├── productDetails_full.json
-    ├── productOffers.json
-    ├── productReviews.json
-    ├── productSearch.json
-    ├── bestSellers.json
-    ├── sellerProfile.json
-    ├── sellerProducts.json
-    ├── sellerReviews.json
-    └── stockEstimate.json
+└── examples/                          # Simple Python examples
+    ├── 01_search_products.py         # Search for products
+    ├── 02_product_details.py         # Get product details
+    ├── 03_product_offers.py          # Get product offers
+    ├── 04_product_reviews.py         # Get product reviews
+    ├── 05_best_sellers.py            # Get best sellers
+    ├── 06_todays_deals.py            # Get today's deals
+    ├── 07_seller_profile.py          # Get seller profile
+    ├── 08_seller_products.py         # Get seller products
+    ├── 09_seller_reviews.py          # Get seller reviews
+    └── 10_batch_product_details.py   # Batch product details (up to 10)
 ```
+
+Example response shapes for every endpoint are in the [OpenAPI spec](https://dash.apiguru.app/openapi.json).
 
 ## Tips
 
@@ -406,9 +449,10 @@ amazon-scraper-v2/
 
 ## Support for **amazon-scraper-v2**.
 
-- **Documentation**: [https://docs.apiguru.app](https://docs.apiguru.app)
+- **Documentation**: [llms.txt](https://agent.apiguru.app/llms.txt) (what your agent reads) · [OpenAPI](https://dash.apiguru.app/openapi.json) · [Agent Kit](https://github.com/apiguru-app/agent-kit)
 - **Dashboard**: [https://dash.apiguru.app](https://dash.apiguru.app)
 - **API Status**: Check your usage and limits in the dashboard
+- **Something wrong or missing?** Open an issue on the [Agent Kit](https://github.com/apiguru-app/agent-kit/issues), or post to the [feedback wall](https://dash.apiguru.app/feedback) — no account needed. The agents and developers who report are the ones this API gets fixed for.
 
 
 ## License

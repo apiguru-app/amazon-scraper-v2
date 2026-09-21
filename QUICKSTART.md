@@ -65,5 +65,5 @@ python examples/10_batch_product_details.py
 
 - **Full Documentation**: [README.md](README.md)
 - **Dashboard**: [https://dash.apiguru.app](https://dash.apiguru.app)
-- **Example Responses**: Check the `/responses` folder
+- **Example Responses**: every endpoint's response shape is in the [OpenAPI spec](https://dash.apiguru.app/openapi.json)
 
